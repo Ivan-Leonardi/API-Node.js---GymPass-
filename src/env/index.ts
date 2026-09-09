@@ -7,6 +7,7 @@ const envSchema = z.object({
     .enum(['development', 'test', 'production'])
     .default('development'),
   PORT: z.coerce.number().default(3333),
+  DATABASE_URL: z.string().min(1),
 });
 
 const _env = envSchema.safeParse(process.env); //safeParse verifica se dentro do objeto process.env existe as variáveis de ambiente que foram definidas no envSchema
